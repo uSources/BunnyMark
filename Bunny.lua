@@ -1,6 +1,7 @@
 require "assets"
 Bunny = {}
 Bunny.__index = Bunny
+Directions = {-1, 1}
 
 function Bunny:create(x, y, speed)
     local o = {}
@@ -8,8 +9,13 @@ function Bunny:create(x, y, speed)
     o.x = x or 1
     o.y = y or 1
     o.speed = speed or 1
-    o.dirx = 1
-    o.diry = 1
+    o.color = {}
+    o.color.r = math.random(0, 1)
+    o.color.g = math.random(0, 1)
+    o.color.b = math.random(0, 1)
+    o.color.a = 1
+    o.dirx = Directions[math.ceil(math.random(1,2))]
+    o.diry = Directions[math.ceil(math.random(1,2))]
     return o
 end
 

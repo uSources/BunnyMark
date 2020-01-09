@@ -16,6 +16,7 @@ function love.update(dt)
   batch:clear()
   for i, bunny in ipairs(Pool) do
     bunny:update(dt)
+    batch:setColor(bunny.color.r,bunny.color.g,bunny.color.b,bunny.color.a)
     batch:add(bunny.x, bunny.y)
   end
 
