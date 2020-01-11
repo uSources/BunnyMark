@@ -4,14 +4,17 @@ local MAX_BUNNYES = 8000
 local BUNNY_COUNT = 0
 local Bunny = require "Bunny"
 local Pool = {}
+local stats = love.graphics.getStats()
 local batch = love.graphics.newSpriteBatch(bunny_sprite)
 
 function love.load()
 end
 function love.draw()
-  love.graphics.print("Bunnies:" .. #Pool, 10, 10)
-  love.graphics.print("FPS:" .. love.timer.getFPS(), 10, 20)
   love.graphics.draw(batch, x, y)
+  love.graphics.print("Bunnies:" .. #Pool, 10, 10)
+  love.graphics.print("FPS:" .. love.timer.getFPS(), 10, 25)
+  love.graphics.print("MEMORY:" .. stats.texturememory, 10, 40)
+  love.graphics.print("CALLBACKS:" .. stats.drawcalls, 10, 55)
   print(#Pool)
 end
 
