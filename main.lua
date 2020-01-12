@@ -1,22 +1,21 @@
 require "assets"
-
-local MAX_BUNNYES = 8000
-local BUNNY_COUNT = 0
-local BUNNY_SPANW = 1000
+require "opt"
 local Bunny = require "Bunny"
+local BUNNY_COUNT = 0
 local Pool = {}
 local stats = love.graphics.getStats()
 local batch = love.graphics.newSpriteBatch(bunny_sprite)
+local green = {0, 1, 0, 1}
 
 function love.load()
 end
 function love.draw()
-  love.graphics.setBackgroundColor(1,1,1,1)
   love.graphics.draw(batch, x, y)
-  love.graphics.print("Bunnies:" .. #Pool, 10, 10)
-  love.graphics.print("FPS:" .. love.timer.getFPS(), 10, 25)
-  love.graphics.print("MEMORY:" .. stats.texturememory, 10, 40)
-  love.graphics.print("CALLBACKS:" .. stats.drawcalls, 10, 55)
+  love.graphics.setBackgroundColor(1, 1, 1, 1)
+  love.graphics.print({green, "Bunnies:" .. #Pool}, 10, 10)
+  love.graphics.print({green, "FPS:" .. love.timer.getFPS()}, 10, 25)
+  love.graphics.print({green, "MEMORY:" .. stats.texturememory}, 10, 40)
+  love.graphics.print({green, "CALLBACKS:" .. stats.drawcalls}, 10, 55)
 end
 
 function love.update(dt)
